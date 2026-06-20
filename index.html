@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chain Sentinel | Web3 Wallet Risk Scanner</title>
+    <meta
+      name="description"
+      content="Chain Sentinel is an original Web3 wallet risk scanner that explains wallet exposure, contract interaction risk, and behavioral signals."
+    >
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%235eead4'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial' font-size='22' font-weight='800' fill='%2307111f'%3ECS%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="Chain Sentinel home">
+        <span class="brand-mark">CS</span>
+        <span>Chain Sentinel</span>
+      </a>
+      <nav aria-label="Primary navigation">
+        <a href="#scanner">Scanner</a>
+        <a href="#signals">Signals</a>
+        <a href="#architecture">Architecture</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">Web3 Risk Intelligence</p>
+          <h1>AI-flavored wallet risk analysis for crypto-native teams.</h1>
+          <p class="lede">
+            Chain Sentinel turns a wallet address into an explainable risk profile: contract exposure, transfer behavior, token concentration, bridge activity, and operational warnings.
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#scanner">Run Demo Scan</a>
+            <a class="button secondary" href="#architecture">View Design</a>
+          </div>
+        </div>
+        <aside class="terminal-card" aria-label="Risk engine preview">
+          <div class="terminal-header">
+            <span></span><span></span><span></span>
+          </div>
+          <pre><code>risk_engine.scan(wallet)
+  exposure.contracts: 72%
+  bridge_activity: medium
+  token_concentration: high
+  behavior_score: 68/100
+  verdict: review_required</code></pre>
+        </aside>
+      </section>
+
+      <section class="scanner-section" id="scanner">
+        <div class="section-heading">
+          <p class="eyebrow">Scanner</p>
+          <h2>Paste a wallet address and get a readable risk report.</h2>
+        </div>
+        <div class="scanner-grid">
+          <form class="scanner-panel" id="scan-form">
+            <label for="wallet">Wallet address</label>
+            <div class="input-row">
+              <input id="wallet" name="wallet" placeholder="0x742d35Cc6634C0532925a3b844Bc454e4438f44e" autocomplete="off">
+              <button class="button primary" type="submit">Analyze</button>
+            </div>
+            <p class="hint">Demo engine: deterministic client-side scoring, no wallet data is sent anywhere.</p>
+          </form>
+
+          <article class="result-panel" aria-live="polite">
+            <div class="risk-score">
+              <svg viewBox="0 0 120 120" role="img" aria-label="Risk score gauge">
+                <circle cx="60" cy="60" r="50" class="gauge-bg"></circle>
+                <circle cx="60" cy="60" r="50" class="gauge-value" id="gauge"></circle>
+              </svg>
+              <div>
+                <span id="score">68</span>
+                <small id="verdict">Review Required</small>
+              </div>
+            </div>
+            <ul class="finding-list" id="findings"></ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="signals" id="signals">
+        <div class="section-heading">
+          <p class="eyebrow">Signal Model</p>
+          <h2>Signals designed for human review, not blind automation.</h2>
+        </div>
+        <div class="signal-grid">
+          <article>
+            <span>01</span>
+            <h3>Contract Exposure</h3>
+            <p>Flags wallets that interact heavily with contracts, approvals, and unfamiliar execution surfaces.</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>Asset Concentration</h3>
+            <p>Highlights wallets whose portfolio risk depends on a narrow set of volatile assets.</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>Bridge Activity</h3>
+            <p>Identifies cross-chain behavior that may increase operational complexity and monitoring needs.</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>Behavior Drift</h3>
+            <p>Scores sudden changes in activity patterns that deserve investigation before action.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="architecture" id="architecture">
+        <div>
+          <p class="eyebrow">Architecture</p>
+          <h2>A lightweight blueprint for Web3 risk products.</h2>
+        </div>
+        <div class="architecture-steps">
+          <div>Wallet Input</div>
+          <div>On-chain Signals</div>
+          <div>Risk Engine</div>
+          <div>Explainable Report</div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <span>Chain Sentinel</span>
+      <span>Original Web3 risk intelligence demo</span>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

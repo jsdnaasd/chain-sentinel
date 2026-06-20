@@ -1,0 +1,40 @@
+<svg width="1200" height="480" viewBox="0 0 1200 480" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="480" rx="28" fill="#07111F"/>
+  <text x="54" y="68" fill="white" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="900">Chain Sentinel Architecture</text>
+  <text x="54" y="104" fill="#A5B4C7" font-family="Inter, Arial, sans-serif" font-size="18">A simple blueprint for explainable Web3 wallet risk intelligence.</text>
+  <g font-family="Inter, Arial, sans-serif">
+    <rect x="60" y="162" width="210" height="190" rx="20" fill="#10243A" stroke="#294866"/>
+    <text x="92" y="210" fill="#67E8F9" font-size="20" font-weight="900">Wallet Input</text>
+    <text x="92" y="252" fill="#DCE8F4" font-size="16">Address</text>
+    <text x="92" y="282" fill="#DCE8F4" font-size="16">Chain context</text>
+    <text x="92" y="312" fill="#DCE8F4" font-size="16">User intent</text>
+    <rect x="340" y="142" width="230" height="230" rx="20" fill="#0D2B26" stroke="#2A6F63"/>
+    <text x="372" y="190" fill="#5EEAD4" font-size="20" font-weight="900">Signal Engine</text>
+    <text x="372" y="232" fill="#DCE8F4" font-size="16">Approvals</text>
+    <text x="372" y="262" fill="#DCE8F4" font-size="16">Token spread</text>
+    <text x="372" y="292" fill="#DCE8F4" font-size="16">Bridge activity</text>
+    <text x="372" y="322" fill="#DCE8F4" font-size="16">Behavior drift</text>
+    <rect x="640" y="162" width="210" height="190" rx="20" fill="#3A2A10" stroke="#8A631E"/>
+    <text x="672" y="210" fill="#FBBF24" font-size="20" font-weight="900">Risk Model</text>
+    <text x="672" y="252" fill="#F7E8CA" font-size="16">Weighted score</text>
+    <text x="672" y="282" fill="#F7E8CA" font-size="16">Severity</text>
+    <text x="672" y="312" fill="#F7E8CA" font-size="16">Warnings</text>
+    <rect x="920" y="142" width="220" height="230" rx="20" fill="#101827" stroke="#344054"/>
+    <text x="952" y="190" fill="#E5E7EB" font-size="20" font-weight="900">Report UI</text>
+    <text x="952" y="232" fill="#D1D5DB" font-size="16">Risk score</text>
+    <text x="952" y="262" fill="#D1D5DB" font-size="16">Findings</text>
+    <text x="952" y="292" fill="#D1D5DB" font-size="16">Human review</text>
+    <text x="952" y="322" fill="#D1D5DB" font-size="16">Export ready</text>
+  </g>
+  <g stroke="#73859B" stroke-width="4" stroke-linecap="round">
+    <path d="M282 257H328"/>
+    <path d="M582 257H628"/>
+    <path d="M862 257H908"/>
+  </g>
+  <g fill="#73859B">
+    <path d="M328 257L314 248V266L328 257Z"/>
+    <path d="M628 257L614 248V266L628 257Z"/>
+    <path d="M908 257L894 248V266L908 257Z"/>
+  </g>
+  <text x="60" y="424" fill="#A5B4C7" font-family="Inter, Arial, sans-serif" font-size="16">Demo implementation uses deterministic client-side scoring. Production systems should connect verified indexers, risk lists, and chain-specific data sources.</text>
+</svg>
