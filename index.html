@@ -19,6 +19,7 @@
       </a>
       <nav aria-label="Primary navigation">
         <a href="#scanner">Scanner</a>
+        <a href="#gallery">Preview</a>
         <a href="#signals">Signals</a>
         <a href="#architecture">Architecture</a>
       </nav>
@@ -28,32 +29,27 @@
       <section class="hero">
         <div class="hero-copy">
           <p class="eyebrow">Web3 Risk Intelligence</p>
-          <h1>AI-flavored wallet risk analysis for crypto-native teams.</h1>
+          <h1>Wallet risk analysis for crypto-native teams.</h1>
           <p class="lede">
             Chain Sentinel turns a wallet address into an explainable risk profile: contract exposure, transfer behavior, token concentration, bridge activity, and operational warnings.
+            <br>
+            面向 Web3 团队的钱包风险分析工具，把地址行为转化为可读的风险评分和审查建议。
           </p>
           <div class="hero-actions">
             <a class="button primary" href="#scanner">Run Demo Scan</a>
             <a class="button secondary" href="#architecture">View Design</a>
           </div>
         </div>
-        <aside class="terminal-card" aria-label="Risk engine preview">
-          <div class="terminal-header">
-            <span></span><span></span><span></span>
-          </div>
-          <pre><code>risk_engine.scan(wallet)
-  exposure.contracts: 72%
-  bridge_activity: medium
-  token_concentration: high
-  behavior_score: 68/100
-  verdict: review_required</code></pre>
-        </aside>
+        <figure class="hero-visual">
+          <img src="assets/hero-dashboard.png" alt="Chain Sentinel dashboard preview">
+        </figure>
       </section>
 
       <section class="scanner-section" id="scanner">
         <div class="section-heading">
           <p class="eyebrow">Scanner</p>
           <h2>Paste a wallet address and get a readable risk report.</h2>
+          <p class="section-copy">输入钱包地址，生成风险评分、行为信号和人工审查建议。</p>
         </div>
         <div class="scanner-grid">
           <form class="scanner-panel" id="scan-form">
@@ -81,10 +77,33 @@
         </div>
       </section>
 
+      <section class="gallery" id="gallery">
+        <div class="section-heading">
+          <p class="eyebrow">Product Preview</p>
+          <h2>A richer surface for reports, monitoring, and operations.</h2>
+          <p class="section-copy">展示面覆盖风险报告、链上监控和运营工作台，方便作为 GitHub 项目页和产品原型展示。</p>
+        </div>
+        <div class="gallery-grid">
+          <figure class="wide">
+            <img src="assets/risk-report.png" alt="Wallet risk report interface">
+            <figcaption>Wallet Risk Report · 钱包风险报告</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/monitoring-workspace.png" alt="On-chain monitoring workspace">
+            <figcaption>Monitoring Workspace · 链上监控工作台</figcaption>
+          </figure>
+          <figure>
+            <img src="assets/architecture.svg" alt="Risk engine architecture">
+            <figcaption>Risk Engine Architecture · 风险引擎架构</figcaption>
+          </figure>
+        </div>
+      </section>
+
       <section class="signals" id="signals">
         <div class="section-heading">
           <p class="eyebrow">Signal Model</p>
           <h2>Signals designed for human review, not blind automation.</h2>
+          <p class="section-copy">信号用于辅助判断，不替代人工审查和安全决策。</p>
         </div>
         <div class="signal-grid">
           <article>
@@ -114,6 +133,7 @@
         <div>
           <p class="eyebrow">Architecture</p>
           <h2>A lightweight blueprint for Web3 risk products.</h2>
+          <p class="arch-copy">A practical structure for turning wallet activity into explainable risk output.<br>从钱包输入到链上信号、风险引擎和可解释报告的轻量产品架构。</p>
         </div>
         <div class="architecture-steps">
           <div>Wallet Input</div>
