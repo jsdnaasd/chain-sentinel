@@ -1,49 +1,34 @@
 # Chain Sentinel
 
-<p align="center">
-  <img src="assets/hero-dashboard.png" alt="Chain Sentinel risk operations dashboard" width="100%" />
-</p>
+Static Web3 wallet risk scanner demo with a deterministic client-side scoring model.
 
-<h1 align="center">Chain Sentinel</h1>
+中文说明：这是一个静态 Web3 钱包风险扫描 demo。它不会连接真实链上数据，而是在前端用确定性的示例模型把钱包地址转成风险分数和可读 findings。
 
-<p align="center">
-  <strong>Original Web3 Wallet Risk Scanner · 原创 Web3 钱包风险扫描器</strong>
-</p>
+[Live demo](https://jsdnaasd.github.io/chain-sentinel/) · [Repository](https://github.com/jsdnaasd/chain-sentinel)
 
 <p align="center">
-  A lightweight front-end demo for explainable wallet risk analysis: contract exposure, token concentration, bridge activity, behavior drift, and human-readable findings.
-  <br />
-  一个轻量级 Web3 风险分析项目：把钱包地址转化为可读的风险评分、行为信号和人工审查建议。
+  <img src="assets/hero-dashboard.png" alt="Chain Sentinel dashboard screenshot" width="100%" />
 </p>
 
-<p align="center">
-  <a href="https://github.com/jsdnaasd/chain-sentinel/stargazers"><img alt="GitHub stars" src="https://img.shields.io/github/stars/jsdnaasd/chain-sentinel?style=for-the-badge"></a>
-  <img alt="Web3" src="https://img.shields.io/badge/Web3-Risk%20Scanner-7C3AED?style=for-the-badge">
-  <img alt="Vanilla JS" src="https://img.shields.io/badge/Vanilla%20JS-No%20Framework-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
-</p>
+## What Is Implemented
 
----
+- Address input form with a default Ethereum-style wallet address.
+- Deterministic pseudo-analysis based on the input address.
+- Four visible signal groups: contract exposure, asset concentration, bridge activity, and behavior drift.
+- Weighted score calculation and risk verdict.
+- Report panel with human-readable findings.
+- Static GitHub Pages deployment with no backend.
 
-## Why
+中文：
 
-Most wallet tools show balances and transactions. Chain Sentinel focuses on a different question:
+- 钱包地址输入表单。
+- 根据输入地址生成确定性的 demo 分析结果。
+- 展示四类信号：合约暴露、资产集中度、跨链桥活动、行为漂移。
+- 用加权分数生成风险等级。
+- 输出可读的风险发现。
+- 作为静态页面部署到 GitHub Pages。
 
-> Should this wallet activity be reviewed before a user, trader, founder, or protocol operator trusts it?
-
-The demo turns wallet input into an explainable risk report. It is intentionally simple, frontend-only, and easy to extend into a real product connected to indexers, risk lists, token metadata, bridge data, and contract intelligence.
-
-Chain Sentinel 不是普通的钱包余额查询工具，而是面向风险判断：通过钱包地址生成风险评分、行为解释和人工审查建议。它可以作为 Web3 安全产品、钱包工具、链上监控系统或投研后台的原型基础。
-
-It is built to show practical Web3 data product thinking:
-
-- 钱包地址风险评分
-- 合约交互暴露分析
-- Token 集中度分析
-- 跨链桥行为提示
-- 钱包行为漂移检测
-- 可解释风险报告 UI
-
-## Product Preview
+## Product Screens
 
 <p align="center">
   <img src="assets/risk-report.png" alt="Wallet risk report preview" width="100%" />
@@ -53,19 +38,38 @@ It is built to show practical Web3 data product thinking:
   <img src="assets/monitoring-workspace.png" alt="On-chain monitoring workspace preview" width="100%" />
 </p>
 
-## Features
+## Scoring Model
 
-- **Explainable scoring**: every score comes with readable findings.
-- **Client-side demo engine**: no wallet address is sent to a backend.
-- **No framework required**: runs as a static site.
-- **Production-ready direction**: easy to connect to real chain indexers later.
-- **Clean product surface**: landing page, scanner panel, signal model, and report-style visuals.
+The scoring logic is in [`script.js`](script.js). It does not call an indexer or RPC endpoint yet.
 
-- **可解释评分**：每个分数都对应可读的风险发现。
-- **前端本地 demo**：钱包地址不会发送到任何后端。
-- **无需框架**：作为静态站点即可运行。
-- **方便产品化**：后续可以接入真实链上索引器、风险名单和合约情报。
-- **展示面完整**：包含产品首页、扫描面板、信号模型和报告风格配图。
+```text
+wallet address
+  -> normalize input
+  -> derive deterministic seed
+  -> generate four demo signals
+  -> weighted risk score
+  -> verdict and findings
+```
+
+Current weights:
+
+```text
+risk_score =
+  contract_exposure * 0.30 +
+  concentration      * 0.24 +
+  bridge_activity    * 0.20 +
+  behavior_drift     * 0.26
+```
+
+Verdict thresholds:
+
+```text
+75-100  High Risk
+55-74   Review Required
+0-54    Low Risk
+```
+
+中文：当前模型是前端 demo 模型，不代表真实钱包风险。它的价值在于展示风险产品的界面结构、信号解释方式和后续接入真实数据的接口位置。
 
 ## Architecture
 
@@ -73,47 +77,94 @@ It is built to show practical Web3 data product thinking:
   <img src="assets/architecture.svg" alt="Chain Sentinel architecture" width="100%" />
 </p>
 
-```text
-Wallet Input
-  -> On-chain Signal Extractor
-  -> Risk Scoring Engine
-  -> Explainable Findings
-  -> Human Review UI
-```
+Production data sources that could be added later:
 
-生产化可以接入：
+- EVM RPC or indexer APIs for transaction history.
+- Token metadata and liquidity sources.
+- Approval and allowance scanners.
+- Scam address and contract risk lists.
+- Bridge event indexers.
+- ENS labels and address book context.
 
-- Etherscan / Blockscout / Alchemy / Covalent / The Graph
-- Scam address lists and contract risk databases
-- Token metadata and liquidity sources
-- Bridge event indexers
-- LLM-generated report summaries with strict guardrails
+中文后续可接入：
+
+- EVM RPC 或链上索引器。
+- Token 元数据和流动性数据。
+- 授权与 allowance 风险扫描。
+- 欺诈地址、风险合约名单。
+- 跨链桥事件索引。
+- ENS 标签和地址簿上下文。
 
 ## Run Locally
 
-Because this is a static frontend, you can open `index.html` directly or serve it locally:
-
 ```bash
+git clone https://github.com/jsdnaasd/chain-sentinel.git
+cd chain-sentinel
 python3 -m http.server 5173
 ```
 
-Then open:
+Open:
 
 ```text
 http://localhost:5173
 ```
 
+## Verification
+
+Manual check:
+
+- load the page
+- submit the default wallet
+- paste a different `0x...` address
+- confirm the score, verdict, gauge, and findings update together
+
+Static response check:
+
+```bash
+python3 -m http.server 5173
+curl -I http://localhost:5173
+```
+
+中文：目前没有自动化测试。这个项目是静态前端 demo，验证重点是页面能打开、输入变化能触发报告更新、风险分数和 findings 保持一致。
+
+## Known Limitations
+
+- No real chain data ingestion yet.
+- No wallet signature, auth, or backend storage.
+- No RPC, Etherscan, Alchemy, Covalent, or The Graph integration.
+- No real approval scanner.
+- No address reputation database.
+- The current score is useful only for UI and workflow demonstration.
+
+中文限制：
+
+- 还没有真实链上数据。
+- 没有钱包签名、登录或后端存储。
+- 没有接入 RPC 或第三方索引器。
+- 没有真实授权扫描。
+- 没有地址信誉库。
+- 当前分数只能用于界面和流程演示，不能作为真实安全结论。
+
 ## Roadmap
 
-- Real EVM transaction ingestion
-- Wallet approval risk scanner
-- Contract reputation layer
-- ENS and address book support
-- Exportable PDF risk report
-- Optional LLM summary with source-grounded findings
+- Add real EVM transaction ingestion.
+- Add token approval risk checks.
+- Add known contract labels and ENS context.
+- Add address reputation import.
+- Add exportable wallet risk report.
+- Add source-grounded summary generation after real data exists.
+
+中文下一步：
+
+- 接入真实 EVM 交易数据。
+- 增加 token 授权风险检查。
+- 加入合约标签和 ENS 上下文。
+- 导入地址信誉数据。
+- 支持导出钱包风险报告。
+- 在真实数据基础上生成带来源的摘要。
 
 ## Disclaimer
 
-This project is for engineering demonstration and risk research only. It does not provide financial advice, investment advice, or definitive security guarantees.
+This project is an interface and workflow demo. It is not financial advice, investment advice, or a definitive security scanner.
 
-本项目仅用于工程展示和风险研究，不构成投资建议、金融建议或安全保证。
+中文：本项目只是界面和工作流 demo，不构成投资建议、金融建议或确定性的安全结论。
